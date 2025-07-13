@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+.Toastify__toast {
+  border-radius: 8px;
+  background: #27272a; /* your dark bg */
+  color: orange;      /* yellow text, or your brand color */
+  font-size: 0.95rem;
+}
+
+.Toastify__progress-bar {
+  background: #e58f1e; /* green progress bar */
+}

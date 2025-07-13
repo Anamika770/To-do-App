@@ -1,0 +1,37 @@
+name: Deploy To do App to Github Pages
+
+on:
+    push:
+        branches:
+            -main
+
+jobs:
+    build-deploy:
+        runs-on: ubantu-latest
+        
+        steps:
+            #Checkout the repository
+          - name: Checkout code
+            uses: actions/checkout@v3
+
+            #Setup node js
+          - name: Setup Node js
+            uses: actions/setup-node@v3
+            with:
+                node-version: 22
+
+            #Install Dependencies
+          - name: Install Dependencies
+            run: npm install
+            
+            #Build the project
+          - name: Build the project
+            run: npm run build
+
+            #Deploy the project to github pages
+          - name: Deploy the project to github pages
+            uses: peaceiris/actions-gh-pages@v4
+            with: 
+                github_token: ${{secrets.GITHUB_TOKEN}}
+                publish_dir: dist
+
